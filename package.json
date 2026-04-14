@@ -10,7 +10,10 @@
     "lint": "eslint",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "docker:local:up": "docker compose up -d",
+    "docker:local:down": "docker compose down",
+    "docker:local:restart": "docker compose down && docker compose up -d"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

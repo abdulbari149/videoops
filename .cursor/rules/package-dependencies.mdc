@@ -1,0 +1,16 @@
+---
+description: Install dependencies only via the project package manager, never by editing package manifests by hand.
+alwaysApply: true
+---
+
+# Package installation
+
+Do not add, remove, or bump dependencies by editing `package.json`, `pnpm-lock.yaml`, `package-lock.json`, or `yarn.lock` directly.
+
+Always use the package manager the repo uses:
+
+- If `pnpm-lock.yaml` exists or `package.json` has `"packageManager": "pnpm@..."`, use `pnpm add`, `pnpm add -D`, `pnpm remove`, etc.
+- If `yarn.lock` exists, use `yarn add` / `yarn remove`.
+- If only `package-lock.json` exists, use `npm install` / `npm uninstall`.
+
+After installs, commit the updated manifest and lockfile together.
