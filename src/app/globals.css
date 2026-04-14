@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * Fallbacks match DEFAULT_THEME_ID (clean-light) when vars are not yet on <html>.
+ * Active theme is set in app/layout.tsx via paletteToCssVars (--palette-* only).
+ * shadcn semantic tokens below are derived from those palette variables.
+ */
+:root {
+  --palette-bg: #f6f7fb;
+  --palette-surface: #ffffff;
+  --palette-border: #e6e8ef;
+  --palette-text: #111827;
+  --palette-muted: #6b7280;
+  --palette-accent: #2563eb;
+  --palette-accent-secondary: #1d4ed8;
+  --palette-success: #16a34a;
+  --palette-warning: #d97706;
+  --palette-danger: #dc2626;
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--palette-bg);
+  --color-foreground: var(--palette-text);
+  --color-card: var(--palette-surface);
+  --color-card-foreground: var(--palette-text);
+  --color-popover: var(--palette-surface);
+  --color-popover-foreground: var(--palette-text);
+  --color-primary: var(--palette-accent);
+  --color-primary-foreground: #ffffff;
+  /* shadcn secondary = neutral surface (not legacy accent-secondary) */
+  --color-secondary: color-mix(
+    in srgb,
+    var(--palette-border) 55%,
+    var(--palette-surface) 45%
+  );
+  --color-secondary-foreground: var(--palette-text);
+  --color-muted: color-mix(
+    in srgb,
+    var(--palette-border) 40%,
+    var(--palette-surface) 60%
+  );
+  --color-muted-foreground: var(--palette-muted);
+  --color-accent: color-mix(
+    in srgb,
+    var(--palette-accent) 16%,
+    var(--palette-surface)
+  );
+  --color-accent-foreground: var(--palette-text);
+  --color-destructive: var(--palette-danger);
+  --color-border: var(--palette-border);
+  --color-input: var(--palette-border);
+  --color-ring: var(--palette-accent);
+  --color-surface: var(--palette-surface);
+  --color-success: var(--palette-success);
+  --color-warning: var(--palette-warning);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-embed), ui-monospace, monospace;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Dark palettes: default Next logo is black; invert for contrast on dark surfaces */
+[data-theme="studio-dark"] .theme-logo-invert,
+[data-theme="broadcast-teal"] .theme-logo-invert {
+  filter: invert(1);
+}
